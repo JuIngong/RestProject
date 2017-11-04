@@ -1,12 +1,17 @@
 package servicerest
 
 class BootStrap {
+    def springSecurityService
 
     def init = { servletContext ->
 
+        def roleUser = new Role(authority: 'ROLE_USER').save(flush: true, failOnError: true)
+        def userInstance = new User(password: springSecurityService.encodePassword("user"), username: 'user').save(flush: true, failOnError: true)
+        UserRole.create(userInstance, roleUser, true)
+
         if (Library.count == 0) {
             (1..3).each {
-                new Library(name: "Lib "+it, adresse: "Ici", yearCreated: 2017)
+                new Library(name: "Lib " + it, adresse: "Ici", yearCreated: 2017)
                         .addToBooks(new Book(name: "Book 1", author: "Jean", isbn: "978-2-10-063487-0", releaseDate: new Date(2012, 10, 17)))
                         .addToBooks(new Book(name: "Book 2", author: "Pierre", isbn: "978-2-10-054387-0", releaseDate: new Date(2015, 9, 1)))
                         .addToBooks(new Book(name: "Book 3", author: "Robert", isbn: "978-2-10-059657-0", releaseDate: new Date(2011, 1, 24)))

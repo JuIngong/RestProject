@@ -3,39 +3,39 @@ package servicerest
 class UrlMappings {
 
     static mappings = {
-//        "/$controller/$action?/$id?(.$format)?"{
-//            constraints {
-//                // apply constraints here
-//            }
-//        }
+        "/$controller/$action?/$id?(.$format)?"{
+            constraints {
+                // apply constraints here
+            }
+        }
 
         "/"(view: "/index")
         "500"(view: '/error')
-        "/library/$id"(controller: "library") {
+        "/api/library/$id"(controller: "library") {
             action = [GET: "getLibrary", PUT: "editLibrary", DELETE:"delLibrary"]
         }
-        "/libraries"(controller: "library") {
+        "/api/libraries"(controller: "library") {
             action = [GET: "getLibraries"]
         }
-        "/library"(controller: "library") {
+        "/api/library"(controller: "library") {
             action = [POST: "addLibrary"]
         }
-        "/library/$id/books"(controller: "library") {
+        "/api/library/$id/books"(controller: "library") {
             action = [GET: "getBooks"]
         }
-        "/library/$lId/book/$id"(controller: "library") {
+        "/api/library/$lId/book/$id"(controller: "library") {
             action = [GET: "getBook", PUT: "editBook", DELETE: "delBook"]
         }
-        "/library/$lId/book"(controller: "library") {
+        "/api/library/$lId/book"(controller: "library") {
             action = [POST: "addBook"]
         }
-        "/book/$id"(controller: "book") {
+        "/api/book/$id"(controller: "book") {
             action = [GET: "getBook", PUT: "editBook", DELETE:"delBook"]
         }
-        "/books"(controller: "book") {
+        "/api/books"(controller: "book") {
             action = [GET: "getBooks"]
         }
-        "/book"(controller: "book") {
+        "/api/book"(controller: "book") {
             action = [POST: "addBook"]
         }
     }
