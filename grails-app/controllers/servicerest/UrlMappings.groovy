@@ -38,5 +38,6 @@ class UrlMappings {
         "/api/book"(controller: "book") {
             action = [GET: "error405", POST: "addBook", PUT: "error405", DELETE: "error405"]
         }
+        "/apidoc/$action?/$id?"(controller: "apiDoc", action: "getDocuments")
     }
 }
