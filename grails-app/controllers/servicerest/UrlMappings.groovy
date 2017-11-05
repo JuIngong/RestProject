@@ -29,7 +29,7 @@ class UrlMappings {
         "/api/library/$lId/book"(controller: "library") {
             action = [GET: "error405", POST: "addBook", PUT: "error405", DELETE: "error405"]
         }
-        "/api/v1/book/$id"(controller: "book") {
+        "/api/book/$id"(controller: "book") {
             action = [GET: "getBook", POST: "error405", PUT: "editBook", DELETE: "delBook"]
         }
         "/api/books"(controller: "book") {

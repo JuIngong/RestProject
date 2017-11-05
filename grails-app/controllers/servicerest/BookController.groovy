@@ -37,6 +37,7 @@ class BookController {
         }
     }
 
+
     def editBook(Book book) {
         if (book.save(flush: true))
             render(status: 200, message: "Book updated")
