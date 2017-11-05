@@ -448,14 +448,21 @@ class LibraryController {
             def b = l.books.find {
                 it.id == Long.parseLong(params.id)
             }
-            if (b == null)
-                render(value: 404, message: "Book not found in library")
-            else {
-                if (book.save(flush: true))
-                    render(status: 200, message: "Book updated")
-                else
-                    render(status: 400, message: "Error during update")
+            if (b == null) {
+                def bl = Book.get(params.id)
+                if(bl == null){
+                    render(status: 404, message: "Book Not Found")
+                    return
+                }
+                def lb = Library.get(bl.library.id)
+                lb.removeFromBooks(book)
+                l.addToBooks(book)
             }
+            if (book.save(flush: true))
+                render(status: 200, message: "Book updated")
+            else
+                render(status: 400, message: "Error during update")
+
         }
     }
 
@@ -510,12 +517,7 @@ class LibraryController {
                     paramType = "formData",
                     required = true,
                     value = "Author of the book",
-                    dataType = "string"),
-            @ApiImplicitParam(name = "library.id",
-                    paramType = "formData",
-                    required = true,
-                    value = "Library of the book",
-                    dataType = "int")
+                    dataType = "string")
 
     ])
     def addBook(Book book) {

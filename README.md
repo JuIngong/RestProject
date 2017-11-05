@@ -1,7 +1,7 @@
 # RestProject
 
 La specification/documentation, générer avec swagger, est disponnible à l'url [http://localhost:8081/restproject/apidoc](http://localhost:8081/restproject/apidoc)  
-Les requêtes cUrl sont disponnibles dans le fichier [curl](curl.txt)
+Les requêtes cUrl sont disponnibles dans le fichier [curl](curl.md)
 
 ## Bonus
 Implémentation de la sécurité en utilisant Spring Security et Spring Security Rest.  
