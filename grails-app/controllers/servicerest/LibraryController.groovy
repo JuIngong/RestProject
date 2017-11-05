@@ -130,4 +130,8 @@ class LibraryController {
         }
     }
 
+    def error405(){
+        render(status: 405, message: "Method not allowed")
+    }
+
 }

@@ -53,6 +53,9 @@ class BookController {
             render(status: 201, message: "Book created")
         else
             render(status: 400, message: "Error during creation")
+    }
 
+    def error405(){
+        render(status: 405, message: "Method not allowed")
     }
 }
